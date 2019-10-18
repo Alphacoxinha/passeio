@@ -8,12 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface ContatoRepository extends JpaRepository<Contato, Long> {
 
     List<Contato> findByFone(String fone);
 
     @Query("FROM Contato c WHERE c.fone LIKE %:fone%")
     List<Contato> findByFonePart(@Param("fone") String fone);
-
 }
